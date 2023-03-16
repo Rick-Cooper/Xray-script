@@ -45,7 +45,7 @@ checkSystem() {
         CMD_INSTALL="apt install -y "
         CMD_REMOVE="apt remove -y "
         CMD_UPGRADE="apt update; apt upgrade -y; apt autoremove -y"
-        PHP_SERVICE="php7.4-fpm"
+        PHP_SERVICE="php8.1-fpm"
     else
         PMT="yum"
         CMD_INSTALL="yum install -y "
@@ -194,6 +194,7 @@ installPHP() {
     else
         $CMD_INSTALL lsb-release gnupg2
         apt install software-properties-common
+	add-apt-repository ppa:ondrej/php -y
         $PMT update
         apt install php8.1
         apt install php8.1-{bcmath,fpm,xml,mysql,zip,intl,ldap,gd,cli,bz2,imagick,curl,mbstring,pgsql,opcache,soap,cgi}
